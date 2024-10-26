@@ -182,8 +182,13 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
     }
 
     public void setPinnedHeaderView(View pinnedHeader) {
-        mPinnedHeaderFrameLayout.addView(pinnedHeader);
-        mPinnedHeaderFrameLayout.setVisibility(View.VISIBLE);
+        // Check if pinnedHeader/pinnedHeaderFrameLayout is null
+        if (pinnedHeader == null || mPinnedHeaderFrameLayout == null) {
+            return;
+        } else {
+                mPinnedHeaderFrameLayout.addView(pinnedHeader);
+                mPinnedHeaderFrameLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     public void showPinnedHeader(boolean show) {
